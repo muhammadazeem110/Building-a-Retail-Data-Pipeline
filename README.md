@@ -1,4 +1,4 @@
-![image.png](attachment:image.png)
+![walmartecomm.png](attachment:image.png)
 
 # Walmart Sales Analysis Data Pipeline
 
