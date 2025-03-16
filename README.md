@@ -33,7 +33,39 @@ This file contains complementary data:
 - `Size` - Size of the store
 - `Type` - Type of the store (depends on Size column)
 
-## Data Processing
+## Data Pipeline Steps
+
+Build a data pipeline using custom functions to extract, transform, aggregate, and load e-commerce data. The SQL query for `grocery_sales` and the `extract()` function have already been implemented for you.
+
+To start the project, run the first two cells, then proceed with the following steps:
+
+1. **Implement a function named `transform()`**
+
+   - Takes `merged_df` as input.
+   - Fills missing numerical values (using any method of your choice).
+   - Adds a column "Month".
+   - Keeps only the rows where the weekly sales are over $10,000.
+   - Drops unnecessary columns.
+   - Returns a DataFrame stored as the `clean_data` variable.
+
+2. **Implement the function `avg_weekly_sales_per_month()`**
+
+   - Takes `clean_data` as input.
+   - Selects the "Month" and "Weekly_Sales" columns.
+   - Uses a chain operation with `groupby()`, `agg()`, `reset_index()`, and `round()`.
+   - Groups by the "Month" column and calculates the average monthly sales.
+   - Calls `reset_index()` to start a new index order.
+   - Rounds the results to two decimal places.
+
+3. **Create a function called `load()`**
+
+   - Takes the cleaned and aggregated DataFrames and their paths.
+   - Saves them as `clean_data.csv` and `agg_data.csv`, respectively, without an index.
+
+4. **Define a function `validation()`**
+   - Checks whether the two CSV files from `load()` exist in the current working directory.
+
+### Data Processing
 
 You will need to merge these datasets and perform necessary data manipulations. The transformed DataFrame should be stored as the `clean_data` variable containing the following columns:
 
@@ -45,7 +77,7 @@ You will need to merge these datasets and perform necessary data manipulations. 
 - `CPI`
 - `Unemployment`
 
-## Data Analysis
+### Data Analysis
 
 After merging and cleaning the data, you will analyze Walmart's monthly sales and store the results in the `agg_data` variable, which should look like:
 
@@ -55,11 +87,11 @@ After merging and cleaning the data, you will analyze Walmart's monthly sales an
 | 2.0   | 34333.326579 |
 | ...   | ...          |
 
-## Output
+### Output
 
 Finally, you should save `clean_data` and `agg_data` as CSV files.
 
-## Tools
+### Tools
 
 It is recommended to use `pandas` for this project.
 
